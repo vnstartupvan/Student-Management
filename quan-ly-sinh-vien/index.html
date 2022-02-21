@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/quan-ly-sinh-vien/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <h3 class="display-4 text-center">Quản Lý sinh viên</h3>
+                <form id="formQLSV">
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Mã Sinh Viên : </label>
+                            <input type="text" class="form-control" id="txtMaSV">
+                            <span id="spanMaSV" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Tên Sinh Viên : </label>
+                            <input type="text" class="form-control" id="txtTenSV">
+                            <span id="spanTenSV" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Email : </label>
+                            <input type="text" class="form-control" id="txtEmail">
+                            <span id="spanEmailSV" class="text-danger"></span>
+                        </div>
+                        <!-- <div class="col-6 form-group">
+                            <label for="">Mật khẩu: </label>
+                            <input type="password" class="form-control" id="txtPass">
+                            <span id="spanMatKhau" class="text-danger"></span>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-6 form-group">
+                            <label for="">Ngày Sinh : </label>
+                            <input type="date" class="form-control" id="txtNgaySinh">
+                            <span id="spanNgaySinh" class="text-danger"></span>
+                        </div>
+                        <div class="col-6 form-group">
+                            <label for="">Khóa học: </label>
+                            <select name="" id="khSV" class="form-control">
+                                <option value="0">Chọn khóa học</option>
+                                <option>KH001</option>
+                                <option>KH002</option>
+                            </select>
+                            <span id="spanKhoaHoc" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="">Điểm toán : </label>
+                            <input type="text" class="form-control" id="txtDiemToan">
+                            <span id="spanToan" class="text-danger"></span>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">Điểm lý : </label>
+                            <input type="text" class="form-control" id="txtDiemLy">
+                            <span id="spanLy" class="text-danger"></span>
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="">Điểm hóa : </label>
+                            <input type="text" class="form-control" id="txtDiemHoa">
+                            <span id="spanHoa" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button id="themSV" type="button" onclick="createStudent()" class="btn btn-success">Thêm Sinh Viên</button>
+
+                        <button type="button" id="resetBtn" class="btn btn-dark">Reset</button>
+                        <button id="suaSV" type="button" onclick="updateStudent()" class="btn btn-info none" style="display: none;">Lưu thay đổi</button>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-9 form-group">                    
+                        <input placeholder="Nhập tên hoặc sinh viên" type="text" class="form-control" id="txtSearch" oninput="searchStudent()">
+                    </div>
+                    <div class="col-3 form-group">
+                        <button id="btnSearch" class="btn btn-primary">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 mx-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mã Sinh Viên</th>
+                            <th>Tên Sinh Viên</th>
+                            <th>Email</th>
+                            <th>Ngày Sinh</th>
+                            <th>Khóa Học</th>
+                            <th>Điểm Trung Bình</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodySinhVien">
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <!-- <script src="./Document_files/jquery-3.3.1.slim.min.js.download" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="./Document_files/popper.min.js.download" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="./Document_files/bootstrap.min.js.download" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
+        
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/quan-ly-sinh-vien/student.js"></script>
+    <script src="/quan-ly-sinh-vien/main.js"></script>
+
+</body>
+</html>
